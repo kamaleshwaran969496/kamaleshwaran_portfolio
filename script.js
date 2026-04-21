@@ -108,15 +108,6 @@ function draw() {
         ctx.stroke();
     });
 
-    /*// draw nodes (junction bulge)
-    nodes.forEach(n => {
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, 3, 0, Math.PI * 2);
-
-        ctx.fillStyle = "#00ffff";
-        ctx.shadowBlur = 20;
-        ctx.fill();
-    });*/
     nodes.forEach(n => {
         // outer glow
         ctx.beginPath();
@@ -194,3 +185,4 @@ hoverElements.forEach(el => {
         cursor.classList.remove("hover");
     });
 });
+
