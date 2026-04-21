@@ -185,4 +185,3 @@ hoverElements.forEach(el => {
         cursor.classList.remove("hover");
     });
 });
-
