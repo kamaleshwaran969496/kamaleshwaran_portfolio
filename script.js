@@ -6,6 +6,7 @@ canvas.height = window.innerHeight;
 
 let paths = [];
 let pulses = [];
+let nodes = [];
 
 const STEP = 120;
 
@@ -13,6 +14,7 @@ const STEP = 120;
 function generatePCB() {
     paths = [];
     pulses = [];
+    nodes = [];
 
     let count = 35;
 
@@ -38,13 +40,12 @@ function generatePCB() {
             if (dir === 3) y2 -= length;       // up
 
             paths.push({ x1: x, y1: y, x2, y2 });
+            // store node at start
+            nodes.push({ x: x, y: y });
 
-            // add node pulses
-            /*pulses.push({
-                path: { x1: x, y1: y, x2, y2 },
-                progress: Math.random(),
-                speed: 0.002 + Math.random() * 0.004
-            });*/
+            // store node at end
+            nodes.push({ x: x2, y: y2 });
+
             if (Math.random() > 0.5) {
                 pulses.push({
                 path: { x1: x, y1: y, x2, y2 },
@@ -105,6 +106,30 @@ function draw() {
         ctx.moveTo(p.x1, p.y1);
         ctx.lineTo(p.x2, p.y2);
         ctx.stroke();
+    });
+
+    /*// draw nodes (junction bulge)
+    nodes.forEach(n => {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 3, 0, Math.PI * 2);
+
+        ctx.fillStyle = "#00ffff";
+        ctx.shadowBlur = 20;
+        ctx.fill();
+    });*/
+    nodes.forEach(n => {
+        // outer glow
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 6, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(0,255,255,0.2)";
+        ctx.fill();
+
+        // inner core
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = "#00ffff";
+        ctx.shadowBlur = 25;
+        ctx.fill();
     });
 
     // pulses
