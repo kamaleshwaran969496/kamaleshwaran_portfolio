@@ -1,7 +1,6 @@
 html {
     scroll-behavior: smooth;
 }
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -143,8 +142,8 @@ section h2 {
     background: #111;
     padding: 20px;
     border-radius: 10px;
-    width: 1000px;
-
+    width:100%;
+    max-width:1000px;
     transition: 0.3s;
     border: 1px solid #222;
 }
@@ -251,7 +250,8 @@ section h2 {
     background: rgba(17, 17, 17, 0.5);
     padding: 20px;
     border-radius: 10px;
-    width: 1000px;
+    width:100%;
+    max-width:1000px;
     transition: 0.3s;
     border: 1px solid #222;
 }
@@ -265,8 +265,8 @@ section h2 {
     background: #111;
     padding: 20px;
     border-radius: 10px;
-    width: 1000px;
-
+    width:100%;
+    max-width:1000px;
     transition: 0.3s;
     border: 1px solid #222;
 }
@@ -280,8 +280,8 @@ section h2 {
     background: #111;
     padding: 20px;
     border-radius: 10px;
-    width: 1000px;
-
+    width:100%;
+    max-width:1000px;
     transition: 0.3s;
     border: 1px solid #222;
 }
@@ -295,8 +295,8 @@ section h2 {
     background: #111;
     padding: 20px;
     border-radius: 10px;
-    width: 1000px;
-
+    width:100%;
+    max-width:1000px;
     transition: 0.3s;
     border: 1px solid #222;
 }
@@ -394,7 +394,7 @@ body {
         transform: translate(-50%, -50%) scale(3);
         opacity: 0;
     }
-}*/
+}
 /* electric flicker effect */
 .cursor {
     animation: flicker 0.15s infinite alternate;
@@ -516,4 +516,129 @@ body {
     display: block;
     margin-top: 10px;
     color: #aaa;
+}
+
+/* =========================
+   MOBILE RESPONSIVE FIXES
+========================= */
+@media screen and (max-width: 768px){
+
+/* Navbar stack */
+.navbar{
+    flex-direction: column;
+    padding: 12px 15px;
+}
+
+.logo{
+    margin-bottom: 10px;
+    font-size:18px;
+}
+
+.nav-links{
+    flex-wrap: wrap;
+    justify-content:center;
+    gap:12px;
+    padding:0;
+}
+
+.nav-links a{
+    font-size:14px;
+}
+
+/* Hero section */
+.hero{
+    padding-top:120px;
+    min-height:100vh;
+}
+
+.hero h1{
+    font-size:32px;
+}
+
+.hero h3{
+    font-size:18px;
+}
+
+/* Make all cards fluid instead of fixed */
+.hero-card,
+.about-card,
+.skills-card,
+.contact-card,
+.project-card{
+    width:100%;
+    max-width:95%;
+    padding:18px;
+    box-sizing:border-box;
+}
+
+/* Better text scaling */
+section h2{
+    font-size:28px;
+}
+
+.about p,
+.skills p,
+.projects p,
+.contact p{
+    font-size:16px;
+}
+
+/* Form fields fit screen */
+.contact input,
+.contact textarea{
+    width:100%;
+    box-sizing:border-box;
+}
+
+/* Timeline adjust */
+.timeline::before{
+    left:12px;
+}
+
+.timeline-item{
+    padding-left:40px;
+}
+
+.timeline-item::before{
+    left:4px;
+}
+
+/* Disable hover transforms on touch */
+.project-card:hover,
+.about-card:hover,
+.skills-card:hover,
+.contact-card:hover{
+    transform:none;
+}
+
+/* Hide custom cursor on mobile */
+.cursor{
+    display:none;
+}
+
+body{
+    cursor:auto;
+}
+
+}
+
+/* Extra small phones */
+@media screen and (max-width:480px){
+
+.hero h1{
+    font-size:28px;
+}
+
+.hero h3{
+    font-size:16px;
+}
+
+.nav-links a{
+    font-size:13px;
+}
+
+.btn{
+    padding:8px 16px;
+    font-size:14px;
+}
 }
